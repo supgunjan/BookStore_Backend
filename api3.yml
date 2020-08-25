@@ -1,0 +1,318 @@
+swagger: "2.0"
+
+info:
+  title: "Swagger Example"
+  description: >
+    This is an example Koa API.
+  version: "1.0.0"
+
+host: "localhost:3000"
+
+schemes:
+  - "http"
+
+paths:
+
+  /book/filter:
+    get:
+      summary: Filter by Param Query
+      description: Filter by Param Query
+
+      parameters:
+        - name: bookName
+          in: query
+          description: Give book name
+          schema:
+            type: string
+            minimum: 1
+
+        - name: authorName
+          in: query
+          description: Give author name
+          schema:
+            type: string
+            minimum: 1
+                
+        - name: category
+          in: query
+          description: Give category
+          schema:
+            type: string
+            minimum: 1
+              
+              
+      responses:
+        '200':
+          description: A book object.
+
+        '400':
+          description: Bad request.
+
+        '404':
+          description: Not Found.
+
+        '405':
+          description: Method not allowed
+
+        default:
+          description: Something went wrong.
+         
+          
+ 
+                      
+  /book/isAvailable:
+    get:
+      summary: IsAvailable by Param Query
+      description: IsAvailable by Param Query
+
+      parameters:
+        - name: bookName
+          in: query
+          description: Give book name
+          schema:
+            type: string
+            minimum: 1
+
+        - name: authorName
+          in: query
+          description: Give author name
+          schema:
+            type: string
+            minimum: 1
+                  
+                
+      responses:
+        '200':
+          description: A book object.
+
+        '400':
+          description: Bad request.
+
+        '404':
+          description: Not Found.
+
+        '405':
+          description: Method not allowed
+
+        default:
+          description: Something went wrong.
+
+  /user/isPrime:
+    get:
+      summary: isPrime by Param Query
+      description: isPrime by Param Query
+
+      parameters:
+        - name: userId
+          in: query
+          description: Give user ID
+          schema:
+            type: string
+            required: true
+            minimum: 1
+              
+      responses:
+        '200':
+          description: A book object.
+
+        '400':
+          description: Bad request.
+
+        '404':
+          description: Not Found.
+
+        '405':
+          description: Method not allowed
+
+        default:
+          description: Something went wrong.
+
+            
+  /userss:
+    delete:
+      summary: delete by Param Query
+      description: delete by Param Query
+
+      parameters:
+        - name: userId
+          required: true
+          in: query
+          description: Give user ID
+          schema:
+            required: true
+            type: string
+            minimum: 1
+              
+      responses:
+        '200':
+          description: A book object.
+
+        '400':
+          description: Bad request.
+
+        '404':
+          description: Not Found.
+
+        '405':
+          description: Method not allowed
+
+        default:
+          description: Something went wrong.
+
+  /book/placeOrder:
+    put:
+      summary: placeorder by Param Query
+      description: placeorder by Param Query
+
+      parameters:
+        - name: userId
+          required: true
+          in: query
+          description: Give user ID
+          schema:
+            required: true
+            type: string
+            minimum: 1
+
+        - name: bookId
+          required: true
+          in: query
+          description: Give book ID
+          schema:
+            type: string
+            minimum: 1
+      
+      responses:
+        '200':
+          description: A book object.
+
+        '400':
+          description: Bad request.
+
+        '404':
+          description: Not Found.
+
+        '405':
+          description: Method not allowed
+
+        default:
+          description: Something went wrong.
+
+  # /users:
+  #   post:
+  #     summary: Creates a new user.
+  #     consumes:
+  #       - application/json
+  #     parameters:
+  #       - in: body
+  #         name: user
+  #         description: The user to create.
+  #         schema:
+  #           type: json
+  #           required:
+  #             - userId
+  #           properties:
+  #             userName:
+  #               type: string
+  #             userId:
+  #               type: string
+  #             isPrimeMember:
+  #               type: boolean
+  #             walletAmount:
+  #               type: integer
+
+  #     responses:
+  #       201:
+  #         description: Created
+
+  /user:
+    post:      
+      consumes: 
+        - application/json
+      produces:
+        - application/json  
+      parameters:
+        - in: body
+          name: user 
+          description: user object
+
+
+      responses:
+        '200':
+          description: A book object.
+
+        '400':
+          description: Bad request.
+
+        '404':
+          description: Not Found.
+
+        '405':
+          description: Method not allowed
+
+        default:
+          description: Something went wrong.
+
+           
+  /users:
+    post:
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - in: "body"
+          name: "body"
+          required: true
+          schema:
+            $ref: "#/definitions/userSchema"
+
+
+      responses:
+        '200':
+          description: A book object.
+
+        '400':
+          description: Something went wrong.
+
+        '404':
+          description: Something went wrong.
+
+        '405':
+          description: Something went wrong.
+
+        default:
+          description: Something went wrong.            
+
+
+definitions:
+
+  userSchema:
+    type: "object"
+    required:
+      - userId
+      - userName
+      - isPrimeMember
+      - walletAmount
+    properties:
+      userId:
+        type: "string"
+      userName:
+        type: "string"
+      isPrimeMember:
+        type: "boolean"
+      walletAmount:
+        type: "integer"
+
+
+  User:
+    description: Task object
+    properties:
+      userName:
+        type: string
+      userId:
+        type: string
+      isPrimeMember:
+        type: boolean
+      walletAmount:
+        type: integer
