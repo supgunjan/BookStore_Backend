@@ -12,3 +12,6 @@ Used DynamoDB for storing Books’ and Users’ Records and Dynogels for mapping
 
 # S3
 Used S3 for storing picture of Book and storing the S3 Url in DynamoDB.
+
+# Swagger
+Used Swagger for API Documentation.
